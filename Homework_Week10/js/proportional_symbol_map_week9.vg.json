@@ -3,7 +3,8 @@
   "width": 800,
   "height": 450,
   "title": "Global Youtuber Distribution 2023",
-  "projection": {"type": "equalEarth"},
+  "projection": {"type": "equalEarth", "rotate": [-150, 0,
+    0]},
   "layer": [
     {
       "data": {

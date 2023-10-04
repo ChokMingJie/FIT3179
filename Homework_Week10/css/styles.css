@@ -1,8 +1,17 @@
-#symbol_map {
-	top:100px;
+#symbol_map1 {
+	top:20px;
 	bottom: 100px; 
 	left: 100px;
 	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
+	height: 200px;
+	width: 800px;
+}
+
+#symbol_map2 {
+	top:50px;
+	bottom: 200px; 
+	left: 100px;
+	right: 100px;
+	height: 600px;
+	width: 800px;
 }

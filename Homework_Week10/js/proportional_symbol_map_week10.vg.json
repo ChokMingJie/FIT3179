@@ -17,6 +17,23 @@
       }
     }
   ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/Homework_Week10/data/Global_YouTube_Statistics.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum['Population'] > Population_Above"
+    },
+    {
+      "aggregate": [
+        {"op": "count", "field": "Country", "as": "Youtuber Count"},
+        {"op": "max", "field": "longitude", "as": "longitude"},
+        {"op": "max", "field": "latitude", "as": "latitude"},
+        {"op": "max", "field": "Population", "as": "Population"}
+      ],
+      "groupby": ["Country"]
+    }
+  ],
   "layer": [
     {
       "data": {
@@ -40,74 +57,53 @@
       "mark": {"type": "geoshape", "fill": null, "stroke": "darkgray"}
     },
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/Homework_Week10/data/Global_YouTube_Statistics.csv"
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Country", "type": "nominal", "title": "Country"},
+          {"field": "Youtuber Count", "type": "quantitative", "title": "Number of Youtuber"},
+          {"field": "latitude", "type": "quantitative", "title": "Latitude"},
+          {"field": "longitude", "type": "quantitative", "title": "Longitude"},
+          {"field": "Population", "type": "quantitative", "title": "Population", "format": ","}
+        ],
+        "size": {
+          "field": "Youtuber Count",
+          "type": "quantitative",
+          "title": "Number of YouTubers",
+          "scale": {"domain": [0, 300], "range": [100, 300]}
+        },
+        "color": {
+          "field": "Youtuber Count",
+          "type": "quantitative",
+          "title": "Number of YouTubers",
+          "scale": {
+            "type": "threshold",
+            "domain": [10, 50, 100, 300],
+            "range": ["#FFD9D9", "#FF6666", "#FF0000", "#CC0000", "#990000"]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
       },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"}
+      },  
       "transform": [
         {
-          "aggregate": [
-            {"op": "count", "field": "Country", "as": "Youtuber Count"},
-            {"op": "max", "field": "longitude", "as": "longitude"},
-            {"op": "max", "field": "latitude", "as": "latitude"},
-            {"op": "max", "field": "Population", "as": "Population"} 
-          ],
-          "groupby": ["Country"]
-        },
-        {"filter": "datum['Population'] > Population_Above"}
-      ],
-      "layer": [
-        {
-          "mark": {"type": "circle", "tooltip": {"content": "data"}},
-          "encoding": {
-            "longitude": {"field": "longitude", "type": "quantitative"},
-            "latitude": {"field": "latitude", "type": "quantitative"},
-            "tooltip": [ 
-              {"field": "Country", "type": "nominal", "title": "Country"},
-              {"field": "Youtuber Count", "type": "quantitative", "title": "Number of Youtuber"},  
-              {"field": "latitude", "type": "quantitative", "title": "Latitude"},  
-              {"field": "longitude", "type": "quantitative", "title": "Longitude"},
-              {"field": "Population", "type": "quantitative", "title": "Population", "format": ","}
-            ] ,
-            "size": {
-              "field": "Youtuber Count",
-              "type": "quantitative",
-              "title": "Number of YouTubers",
-              "scale": {"domain": [0, 300], "range": [100, 300]}
-            },
-            "color": {
-              "field": "Youtuber Count",
-              "type": "quantitative",
-              "title": "Number of YouTubers",
-              "scale": {
-                "type": "threshold",
-                "domain": [10, 50, 100, 300],
-                "range": ["#FFD9D9", "#FF6666", "#FF0000", "#CC0000", "#990000"]
-              }          
-            }
-          }
-        },
-        {
-          "mark": {
-            "type": "text",
-            "align": "right",
-            "baseline": "middle",
-            "dx": -12,
-            "fontSize": 11.5,
-            "fontStyle": "italic"
-          },
-          "encoding": {
-            "text": {"field": "Country", "type": "nominal"},
-            "color": {"value": "black"},
-            "opacity": {
-              "condition": {
-                "test": "datum['Country'] == 'China' || datum['Country'] == 'Australia' || datum['Country'] == 'United Kingdom' || datum['Country'] == 'Spain' ||  datum['Country'] == 'United States' ||  datum['Country'] == 'India' ||  datum['Country'] == 'Brazil'",
-                "value": 1
-              },
-              "value": 0
-            },
-            "longitude": {"field": "longitude", "type": "quantitative"},
-            "latitude": {"field": "latitude", "type": "quantitative"}
-          }
+          "filter": "datum['Country'] === 'China' || datum['Country'] === 'Australia' || datum['Country'] === 'United Kingdom' || datum['Country'] === 'Spain' || datum['Country'] === 'United States' || datum['Country'] === 'India' || datum['Country'] === 'Brazil'"
         }
       ]
     }

@@ -46,7 +46,6 @@
           "type": "nominal",
           "title": "Category",
           "legend": {
-            "title": "category",
             "titleFontSize": 15,
             "titleFont": "Helvetica",
             "direction": "vertical",

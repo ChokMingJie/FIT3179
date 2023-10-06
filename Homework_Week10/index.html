@@ -14,12 +14,12 @@
 <body>
 
     <div id="symbol_map1"></div> <!-- Div for the first visualization -->
-    <div id="symbol_map2"></div> <!-- Div for the second visualization -->
+    <div id="stacked_bar"></div> <!-- Div for the second visualization -->
 
     <script type="text/javascript">
 
         var spec1 = "js/proportional_symbol_map_week9.vg.json"; // Path to the first visualization
-        var spec2 = "js/proportional_symbol_map_week10.vg.json"; // Path to the second visualization
+        var spec2 = "js/stacked_bar.vg.json"; // Path to the second visualization
 
         // Embed the first visualization in the first div
         vegaEmbed('#symbol_map1', spec1).then(function (result) {
@@ -27,7 +27,7 @@
         }).catch(console.error);
 
         // Embed the second visualization in the second div
-        vegaEmbed('#symbol_map2', spec2).then(function (result) {
+        vegaEmbed('#stacked_bar', spec2).then(function (result) {
             // Access the Vega view instance as result.view
         }).catch(console.error);
     </script>

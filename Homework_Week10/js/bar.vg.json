@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/Homework_Week10/data/Global_YouTube_Statistics.csv"
+  },
+  "title": {
+    "text": "Global Youtuber Categories 2023",
+    "fontSize": 20,
+    "font": "Helvetica"
+  },
+  "width": 800,
+  "height": 400,
+  "transform": [
+    {
+      "filter": "datum.category != null && datum.category !== 'nan'"
+    },
+    {
+      "aggregate": [{ "op": "count", "field": "count", "as": "categorySum" }],
+      "groupby": ["category"]
+    }
+  ],
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "category_highlight",
+          "select": { "type": "point", "fields": ["category"] },
+          "bind": "legend"
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "category", "type": "nominal", "title": "Category", "sort": "-y" },
+        "y": { "field": "categorySum", "type": "quantitative", "title": "Total Number of YouTubers" },
+        "color": { "field": "category", "type": "nominal" },
+        "opacity": {
+          "condition": { "param": "category_highlight", "value": 1 },
+          "value": 0.2
+        },
+        "tooltip": [
+          { "field": "category", "title": "Category" },
+          { "field": "categorySum", "title": "Total Number of YouTubers" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "color": "black", "dy": -5 },
+      "encoding": {
+        "x": { "field": "category", "type": "nominal", "title": "Category" },
+        "y": { "field": "categorySum", "type": "quantitative" },
+        "text": { "field": "categorySum", "type": "quantitative" },
+        "fillOpacity": {
+          "condition": { "param": "category_highlight", "value": 1 },
+          "value": 0
+        }
+      }
+    }
+  ]
+}

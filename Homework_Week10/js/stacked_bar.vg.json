@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/Homework_Week10/data/Global_YouTube_Statistics.csv"
+  },
+  "title": {
+    "text": "Global Youtuber 2023",
+    "fontSize": 20,
+    "font": "Helvetica"
+  },
+  "width": 800,
+  "transform": [
+    {
+      "filter": "datum.category != null && datum.category !== 'nan'"
+    },
+    {
+      "groupby": ["Country", "category"],
+      "aggregate": [{ "op": "count", "as": "count" }]
+    }
+  ],
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "category_highlight",
+          "select": { "type": "point", "fields": ["category"]},
+          "bind": "legend"
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "aggregate": "sum",
+          "field": "count",
+          "type": "quantitative",
+          "stack": "zero",
+          "axis": { "title": "Number of Youtuber" }
+        },
+        "y": {
+          "field": "Country",
+          "axis": { "title": "Country" },
+          "sort": "-x"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "title": "Category",
+          "legend": {
+            "title": "category",
+            "titleFontSize": 15,
+            "titleFont": "Helvetica",
+            "direction": "vertical",
+            "orient": "right",
+            "labelFontSize": 15,
+            "labelFont": "Helvetica",
+            "titleLimit": 1000
+          }
+        },
+        "opacity": {
+          "condition": { "param": "category_highlight", "value": 1 },
+          "value": 0.2
+        },
+        "tooltip": [
+          { "field": "Country", "title": "Country" },
+          { "field": "category", "title": "Category" },
+          { "field": "count", "title": "Number of Youtubers" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "color": "darkgrey", "dx": 15, "dy": 3 },
+      "encoding": {
+        "x": {
+          "aggregate": "sum",
+          "field": "count",
+          "type": "quantitative",
+          "stack": "zero",
+          "bandPosition": 0.5
+        },
+        "y": { "field": "Country", "type": "nominal", "sort": "-x" },
+        "text": {
+          "aggregate": "sum",
+          "field": "count",
+          "type": "quantitative"
+        },
+        "fillOpacity": {
+          "condition": { "param": "category_highlight", "value": 1 },
+          "value": 0
+        }
+      }
+    }
+  ]
+}

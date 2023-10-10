@@ -1,0 +1,74 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv"
+    },
+    "title": {
+      "text": "Global Youtuber Channel Type 2023",
+      "fontSize": 20,
+      "font": "Helvetica"
+    },
+    "width": 800,
+    "height": 400,
+    "transform": [
+      {
+        "calculate": "datum.channel_type === 'Animals' || datum.channel_type === 'Autos' || datum.channel_type === 'Nonprofit' ? 'Other' : datum.channel_type",
+        "as": "grouped_channel_type"
+      },
+      {
+        "filter": "datum.grouped_channel_type !== 'nan'"
+      },
+      {
+        "aggregate": [{"op": "count", "field": "count", "as": "categorySum"}],
+        "groupby": ["grouped_channel_type"]
+      }
+    ],
+    "layer": [
+      {
+        "mark": {"type": "arc", "innerRadius": 40, "stroke": "white"},
+        "encoding": {
+          "theta": {
+            "field": "categorySum",
+            "type": "quantitative",
+            "stack": true
+          },
+          "color": {
+            "field": "grouped_channel_type",
+            "type": "nominal",
+            "scale": {
+              "range": [
+                "#f4737a", "#bd0a36", "#ddc9b4", "#ac8763", "#b5dffd", "#6ba3d6",
+                "#e9c39b", "#ac613c", "#ffb6b0", "#f02720", "#b5c8e2", "#2c69b0"
+              ]
+            }
+          },
+          "tooltip": [
+            {"field": "grouped_channel_type", "title": "Category"},
+            {"field": "categorySum", "title": "Total Number of YouTubers"}
+          ]
+        }
+      },
+      {
+        "mark": {"type": "text", "color": "black", "radiusOffset": 10},
+        "encoding": {
+          "theta": {
+            "field": "categorySum",
+            "type": "quantitative",
+            "stack": true
+          },
+          "text": {"field": "categorySum", "type": "quantitative"},
+          "fillOpacity": {"value": 1}
+        }
+      }
+    ],
+    "encoding": {
+      "theta": {"field": "categorySum", "type": "quantitative", "stack": true, "sort": "ascending"},
+      "radius": {"field": "categorySum", "scale": {"type": "sqrt", "zero": true, "rangeMin": 100}},
+      "color": {"field": "grouped_channel_type", "type": "nominal"},
+      "tooltip": [
+        {"field": "grouped_channel_type", "title": "Category"},
+        {"field": "categorySum", "title": "Total Number of YouTubers"}
+      ]
+    }
+  }
+  

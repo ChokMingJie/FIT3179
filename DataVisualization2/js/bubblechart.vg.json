@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv"
+    },
+    "title": {
+      "text": "Global YouTuber 2023",
+      "fontSize": 20,
+      "font": "Helvetica"
+    },
+    "width": 800,
+    "transform": [
+      {
+        "calculate": "datum.channel_type === 'Animals' || datum.channel_type === 'Autos' || datum.channel_type === 'Nonprofit' ? 'Other' : datum.channel_type",
+        "as": "grouped_channel_type"
+      },
+      {
+        "filter": "datum.grouped_channel_type !== 'nan'"
+      },
+      {
+        "groupby": ["grouped_channel_type"],
+        "aggregate": [
+          {
+            "op": "sum",
+            "field": "uploads",
+            "as": "total_uploads"
+          }
+        ]
+      }
+    ],
+    "encoding": {
+      "y": {
+        "field": "grouped_channel_type",
+        "type": "nominal",
+        "sort": {
+          "op": "sum",
+          "field": "total_uploads",
+          "order": "descending"
+        }
+      },
+      "size": {  
+        "field": "total_uploads",
+        "type": "quantitative",
+        "scale": {
+          "range": [100, 2000]  
+        }
+      },
+      "color": {  
+        "type": "nominal",
+        "field": "grouped_channel_type"
+      }
+    },
+    "config": {
+      "view": {
+        "stroke": "transparent"
+      }
+    },
+    "mark": "circle"  
+  }
+  

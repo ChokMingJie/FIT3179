@@ -11,11 +11,9 @@
   "width": 800,
   "height": 400,
   "transform": [
+    {"filter": "datum.category != null && datum.category !== 'nan'"},
     {
-      "filter": "datum.category != null && datum.category !== 'nan'"
-    },
-    {
-      "aggregate": [{ "op": "count", "field": "count", "as": "categorySum" }],
+      "aggregate": [{"op": "count", "field": "count", "as": "categorySum"}],
       "groupby": ["category"]
     }
   ],
@@ -24,33 +22,47 @@
       "params": [
         {
           "name": "category_highlight",
-          "select": { "type": "point", "fields": ["category"] },
+          "select": {"type": "point", "fields": ["category"]},
           "bind": "legend"
         }
       ],
       "mark": "bar",
       "encoding": {
-        "x": { "field": "category", "type": "nominal", "title": "Category", "sort": "-y" },
-        "y": { "field": "categorySum", "type": "quantitative", "title": "Total Number of YouTubers" },
-        "color": { "field": "category", "type": "nominal" },
+        "x": {
+          "field": "category",
+          "type": "nominal",
+          "title": "Category",
+          "sort": "-y"
+        },
+        "y": {
+          "field": "categorySum",
+          "type": "quantitative",
+          "title": "Total Number of YouTubers"
+        },
+        "color": {"field": "category", "type": "nominal"},
         "opacity": {
-          "condition": { "param": "category_highlight", "value": 1 },
+          "condition": {"param": "category_highlight", "value": 1},
           "value": 0.2
         },
         "tooltip": [
-          { "field": "category", "title": "Category" },
-          { "field": "categorySum", "title": "Total Number of YouTubers" }
+          {"field": "category", "title": "Category"},
+          {"field": "categorySum", "title": "Total Number of YouTubers"}
         ]
       }
     },
     {
-      "mark": { "type": "text", "color": "black", "dy": -5 },
+      "mark": {"type": "text", "color": "black", "dy": -5},
       "encoding": {
-        "x": { "field": "category", "type": "nominal", "title": "Category" },
-        "y": { "field": "categorySum", "type": "quantitative" },
-        "text": { "field": "categorySum", "type": "quantitative" },
+        "x": {
+          "field": "category",
+          "type": "nominal",
+          "title": "Category",
+          "sort": "-y"
+        },
+        "y": {"field": "categorySum", "type": "quantitative"},
+        "text": {"field": "categorySum", "type": "quantitative"},
         "fillOpacity": {
-          "condition": { "param": "category_highlight", "value": 1 },
+          "condition": {"param": "category_highlight", "value": 1},
           "value": 0
         }
       }

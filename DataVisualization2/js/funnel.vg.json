@@ -1,0 +1,94 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv"
+    },
+    "title": {
+      "text": "Global YouTuber 2023",
+      "fontSize": 20,
+      "font": "Helvetica"
+    },
+    "width": 800,
+    "transform": [
+      {
+        "calculate": "datum.channel_type === 'Animals' || datum.channel_type === 'Autos' || datum.channel_type === 'Nonprofit' ? 'Other' : datum.channel_type",
+        "as": "grouped_channel_type"
+      },
+      {
+        "filter": "datum.grouped_channel_type !== 'nan'"
+      },
+      {
+        "groupby": ["grouped_channel_type"],
+        "aggregate": [
+          {
+            "op": "sum",
+            "field": "uploads",
+            "as": "total_uploads"
+          }
+        ]
+      }
+    ],
+    "encoding": {
+      "y": {
+        "field": "grouped_channel_type",
+        "type": "nominal",
+        "sort": {
+          "op": "sum",
+          "field": "total_uploads",
+          "order": "descending"
+        }
+      }
+    },
+    "config": {
+      "view": {
+        "stroke": "transparent"
+      }
+    },
+    "layer": [
+      {
+        "mark": "bar",
+        "encoding": {
+          "color": {
+            "type": "nominal",
+            "field": "grouped_channel_type",
+            "legend": null,
+            "scale": {
+              "range": [
+                "#f4737a", "#bd0a36", "#ddc9b4", "#ac8763", "#b5dffd", "#6ba3d6",
+                "#e9c39b", "#ac613c", "#ffb6b0", "#f02720", "#b5c8e2", "#2c69b0"
+              ]
+            }
+          },
+          "x": {
+            "field": "total_uploads",
+            "type": "quantitative",
+            "axis": {
+              "title": "Total Uploads" 
+            },
+            "stack": "center"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dx": 5
+        },
+        "encoding": {
+          "text": {
+            "field": "total_uploads",
+            "type": "quantitative"
+          },
+          "x": {
+            "field": "total_uploads",
+            "type": "quantitative",
+            "stack": "center",
+            "axis": null
+          }
+        }
+      }
+    ]
+  }
+  

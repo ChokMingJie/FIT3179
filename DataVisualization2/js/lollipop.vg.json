@@ -1,0 +1,55 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 450,
+    "title": "Top 10 YouTubers by Subscribers",
+    "data": {
+        "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv",
+        "format": {"type": "csv"}
+    },
+    "transform": [
+        {"filter": {"field": "subscribers", "valid": true}},
+        {"window": [{"op": "rank", "as": "rank"}]},
+        {"filter": {"field": "rank", "lte": 10}}
+    ],
+    "layer": [
+        {
+            "mark": "rule",
+            "encoding": {
+                "y": {"field": "Youtuber", "type": "nominal", "sort": "-x"},
+                "x": {"aggregate": "max", "field": "subscribers", "type": "quantitative", "title": ""},
+                "size": {"value": 8},
+                "color": {
+                    "condition": {"test": "datum.Youtuber === 'T-Series'", "value": "red"},
+                    "value": "grey"
+                },
+                "tooltip": [
+                    {"field": "Youtuber", "type": "nominal", "title": "YouTuber"},
+                    {"field": "subscribers", "type": "quantitative", "title": "Subscribers"}
+                ]
+            }
+        },
+        {
+            "mark": "circle",
+            "encoding": {
+                "y": {"field": "Youtuber", "type": "nominal", "title": "YouTuber", "sort": "-x"},
+                "x": {"field": "subscribers", "type": "quantitative", "title": "Subscribers"},
+                "size": {"value": 500},
+                "color": {
+                    "condition": {"test": "datum.Youtuber === 'T-Series'", "value": "red"},
+                    "value": "grey"
+                },
+                "opacity": {"value": 1},
+                "tooltip": [
+                    {"field": "Youtuber", "type": "nominal", "title": "YouTuber"},
+                    {"field": "subscribers", "type": "quantitative", "title": "Subscribers"}
+                ]
+            }
+        }
+    ],
+    "config": {
+        "axisX": {
+            "labelAngle": 0
+        }
+    }
+}

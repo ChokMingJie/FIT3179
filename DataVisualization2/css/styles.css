@@ -1,8 +1,70 @@
-#symbol_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
+/* Style for the big title */
+.magazine-title {
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 20px;
+	border-radius: 10px;
+	color: lightgray;
+	/* YouTube red color */
 }
+
+/* Style for the plot containers */
+.plot-container {
+	margin-bottom: 40px;
+	text-align: center;
+	background-color: #FFFFFF;
+	/* White background */
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	/* Box shadow for containers */
+}
+
+/* Style for plot titles */
+.plot-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+/* Style for plot content */
+.plot-content {
+	margin-top: 20px;
+}
+
+.page {
+	width: 1000px;
+	height: 4770px;
+	background-color: lightcoral;
+	margin: auto;
+	border-radius: 10px;
+	padding: 50px;
+	padding-top: 35px;
+}
+
+.space {
+	height: 40px;
+}
+
+.vis-container {
+	width: fit-content;
+	border-radius: 10px;
+}
+
+.pure-g {
+	margin-bottom: 40px;
+}
+
+.plot-section {
+	background-color: rgba(236, 215, 215, 0.9);
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.text-highlight {
+	color: darkred;
+	font-weight: bold;
+	font-size: 21px;
+  }

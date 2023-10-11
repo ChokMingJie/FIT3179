@@ -1,68 +1,132 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv"
-    },
-    "title": {
-      "text": "Scatter Plot of Video Views vs. Mean Yearly Earnings",
-      "fontSize": 20,
-      "font": "Helvetica"
-    },
-    "width": 800,
+    "width": 770,
     "height": 400,
-    "mark": "circle",
-    "transform": [
-      {
-        "filter": "datum.Youtuber != 'Sports' && datum.Youtuber != 'YouTube Movies' && datum.mean_yearly_earnings != 0"
+    "background": null,
+    "title": "",
+      "data": {
+        "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv"
       },
-      {
-        "filter": {"field": "subscribers", "valid": true}
-      },
-      {"window": [{"op": "rank", "as": "rank"}]},
-      {"filter": {"field": "rank", "lte": 50}}
-    ],
-    "encoding": {
-      "x": {
-        "field": "video views",
-        "type": "quantitative",
-        "title": "Video Views",
-        "scale": {"type": "log"},
-        "axis": {"format": "~s", "grid": false, "labelFlush": true, "labelOverlap": true, "ticks": false}
-      },
-      "y": {
-        "field": "mean_yearly_earnings",
-        "type": "quantitative",
-        "title": "Yearly Earnings",
-        "scale": {"type": "log"},
-        "axis": {"format": "~s", "grid": false, "labelFlush": true, "labelOverlap": true, "ticks": false}
-      },
-      "size": {
-        "field": "subscribers",
-        "type": "quantitative",
-        "title": "Subscribers",
-        "scale": {
-          "type": "threshold",
-          "domain": [50000000, 100000000, 200000000],
-          "range": [150, 300, 550, 1500]
+      "transform": [
+        {
+          "filter": "datum.Youtuber != 'A4' && datum.Youtuber != 'T-Series Bhakti Sagar' && datum.Youtuber != '5-Minute Crafts' && datum.Youtuber != 'Alan Walker' && datum.Youtuber != 'Sports' && datum.Youtuber != 'YouTube Movies' && datum.mean_yearly_earnings != 0 "
         },
-        "legend": {"format": ".1s"}
-      },
-      "color": {
-        "field": "Youtuber",
-        "type": "nominal",
-        "legend": null
-      },
-      "tooltip": [
-        {"field": "video views", "title": "Video Views", "format": ","},
-        {"field": "mean_yearly_earnings", "title": "Yearly Earnings", "format": ","},
-        {"field": "Youtuber", "title": "YouTuber"},
-        {"field": "subscribers", "title": "Subscribers", "format": ","}
-      ]
+        {
+          "filter": { "field": "subscribers", "valid": true }
+        },
+        {
+          "window": [{ "op": "rank", "as": "rank" }]
+        },
+        {
+          "filter": { "field": "rank", "lte": 50 }
+        }
+      ],
+    "encoding": {
+        "x": {
+          "field": "video views",
+          "type": "quantitative",
+          "title": "Video Views",
+          "scale": { "type": "log" },
+          "axis": { "format": "~s", "grid": false, "labelFlush": true, "labelOverlap": true, "ticks": false }
+        },
+        "y": {
+          "field": "mean_yearly_earnings",
+          "type": "quantitative",
+          "title": "Yearly Earnings",
+          "scale": { "type": "log" },
+          "axis": { "format": "~s", "grid": false, "labelFlush": true, "labelOverlap": true, "ticks": false }
+        }
     },
-    "config": {
-      "view": {
-        "stroke": "transparent"
+    "layer": [
+      {
+        "mark": "circle",
+        "encoding": {
+        "size": {
+          "field": "subscribers",
+          "type": "quantitative",
+          "title": "Number of Subscribers",
+          "scale": {
+            "type": "threshold",
+            "domain": [50000000, 100000000, 200000000],
+            "range": [150, 300, 550, 1500]
+          },
+          "legend": { "format": ".1s" }
+        },
+        "color": {
+          "field": "subscribers",
+          "type": "quantitative",
+          "title": "Number of Subscribers",
+          "scale": { "range": ["#ff758f", "darkred"] }
+        },
+          "opacity": {"value": 0.6},
+        "tooltip": [
+          { "field": "video views", "title": "Video Views", "format": "," },
+          { "field": "mean_yearly_earnings", "title": "Yearly Earnings", "format": "," },
+          { "field": "Youtuber", "title": "YouTuber" },
+          { "field": "subscribers", "title": "Subscribers", "format": "," }
+        ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "middle",
+          "dx": -12,
+          "fontSize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {"field": "Youtuber", "type": "nominal"},
+          "color": {"value": "black"},
+          "opacity": {
+            "condition": {
+              "test": "datum['Youtuber'] == 'T-Series' || datum['Youtuber'] == 'PewDiePie' || datum['Youtuber'] == 'MrBeast' || datum['Youtuber'] == 'Cocomelon - Nursery Rhymes' ",
+              "value": 1
+            },
+            "value": 0
+          },
+          "tooltip": [
+          { "field": "video views", "title": "Video Views", "format": "," },
+          { "field": "mean_yearly_earnings", "title": "Yearly Earnings", "format": "," },
+          { "field": "Youtuber", "title": "YouTuber" },
+          { "field": "subscribers", "title": "Subscribers", "format": "," }
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "middle",
+          "dy": 35,
+          "dx": 280,
+          "fontSize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "condition": {
+              "test": "datum['Youtuber'] == 'Vlad and Niki'",
+              "value": "Vlad and Niki is a fast growing popular children's YouTube channel."
+            },
+            "value": ""
+          },
+          "color": { "value": "black" },
+          "opacity": {
+            "condition": {
+              "test": "datum['Youtuber'] == 'Vlad and Niki'",
+              "value": 1
+            },
+            "value": 0
+          },
+          "tooltip": [
+            { "field": "video views", "title": "Video Views", "format": "," },
+            { "field": "mean_yearly_earnings", "title": "Yearly Earnings", "format": "," },
+            { "field": "Youtuber", "title": "YouTuber" },
+            { "field": "subscribers", "title": "Subscribers", "format": "," }
+          ]
+        }
       }
-    }
+    ]
   }
-  

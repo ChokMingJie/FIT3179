@@ -2,7 +2,13 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
   "height": 450,
-  "title": "Global Youtuber Distribution 2023",
+  "background": null,
+  "title": {
+    "text": "",
+    "fontSize": 24,
+    "font": "Helvetica Neue, Arial, sans-serif",
+    "color": "darkred"
+  },
   "projection": {"type": "equalEarth", "rotate": [-150, 0, 0]},
   "params": [
     {
@@ -34,6 +40,11 @@
       "groupby": ["Country"]
     }
   ],
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+},
   "layer": [
     {
       "data": {
@@ -72,7 +83,7 @@
           "field": "Youtuber Count",
           "type": "quantitative",
           "title": "Number of YouTubers",
-          "scale": {"domain": [0, 300], "range": [100, 300]}
+          "scale": {"domain": [0, 100, 600], "range": [100, 300]}
         },
         "color": {
           "field": "Youtuber Count",

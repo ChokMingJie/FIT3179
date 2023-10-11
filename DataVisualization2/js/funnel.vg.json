@@ -3,12 +3,14 @@
     "data": {
       "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv"
     },
+    "background": null,
     "title": {
-      "text": "Global YouTuber 2023",
+      "text": "",
       "fontSize": 20,
       "font": "Helvetica"
     },
     "width": 800,
+    "height": 450,
     "transform": [
       {
         "calculate": "datum.channel_type === 'Animals' || datum.channel_type === 'Autos' || datum.channel_type === 'Nonprofit' ? 'Other' : datum.channel_type",
@@ -32,6 +34,7 @@
       "y": {
         "field": "grouped_channel_type",
         "type": "nominal",
+        "title": "Channel Type",
         "sort": {
           "op": "sum",
           "field": "total_uploads",
@@ -53,20 +56,24 @@
             "field": "grouped_channel_type",
             "legend": null,
             "scale": {
-              "range": [
-                "#f4737a", "#bd0a36", "#ddc9b4", "#ac8763", "#b5dffd", "#6ba3d6",
-                "#e9c39b", "#ac613c", "#ffb6b0", "#f02720", "#b5c8e2", "#2c69b0"
-              ]
+                "range": [
+                    "#f4737a", "#ff8c85", "#3d6a9b", "#f02720", "#b5a08a", "#9aa4bd",
+                    "#ac8763", "#bd0a36", "#6ba3d6", "#d3a573", "#ac613c", "#2c69b0"
+                ]
             }
           },
           "x": {
             "field": "total_uploads",
             "type": "quantitative",
             "axis": {
-              "title": "Total Uploads" 
+              "title": "Total Uploads"
             },
             "stack": "center"
-          }
+          },
+          "tooltip": [
+            {"field": "grouped_channel_type", "title": "Channel Type"},
+            {"field": "total_uploads", "title": "Total Uploads", "format": ",.0f"}
+          ]
         }
       },
       {
@@ -79,13 +86,18 @@
         "encoding": {
           "text": {
             "field": "total_uploads",
-            "type": "quantitative"
+            "type": "quantitative",
+            "format": ",.0f"
           },
           "x": {
             "field": "total_uploads",
             "type": "quantitative",
             "stack": "center",
             "axis": null
+          },
+          "color": {
+            "type": "nominal",
+            "field": "grouped_channel_type"
           }
         }
       }

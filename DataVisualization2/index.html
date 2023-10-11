@@ -7,20 +7,224 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- CSS file -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-
 </head>
 
 <body>
 
-    <div id="symbol_map"></div>
+    <div class="page">
+
+        <!-- Big title -->
+        <div class="magazine-title">
+            <h1
+                style="text-align:center; font-size: 55px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; color: #8B0000;">
+                Global YouTube Channel Insights 2023</h1>
+            <hr width="80%" color="#8B0000" style="height: 3px">
+            <img style="height: 250px; display: block; margin: 0 auto;" src="data/youtube.png" alt="title image" />
+        </div>
+        <div
+            style="background-color: #a71313; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+            <p
+                style="text-align: center; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 40px; color: rgb(240, 191, 191);">
+                <strong>Welcome to the World of YouTube in 2023</strong>
+            </p>
+            <p
+                style="text-align: center; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 18px; color: rgb(240, 191, 191);">
+                Dive into the captivating realm of YouTube success. This visualization presents comprehensive statistics
+                for the Global YouTube Channels in 2023. Explore intriguing insights, discover subscriber counts, video
+                views, upload frequencies, earnings, and more. Join us on a data-driven journey through the dynamic
+                world of online content creation.
+            </p>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="plot-section">
+            <div class="content">
+                <!-- Your content goes here -->
+                <h1
+                    style="text-align:center; font-size: 45px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; color: #8B0000;">
+                    Top 10 YouTubers by Subscribers</h1>
+                <p
+                    style="  line-height: 1.5; margin-bottom: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 18px; color: rgb(105, 25, 25); text-align: justify;">
+                    This chart showcases the Top 10 YouTubers with the highest number of subscribers as of 2023.
+                    <span class="text-highlight">T-Series</span> leads the pack with a remarkable <span
+                        class="text-highlight">245 million</span> subscribers, making it the most-subscribed
+                    YouTube channel globally. YouTube Movies follows closely with 170 million subscribers.
+                    The remaining top creators include MrBeast (166 million), Cocomelon - Nursery Rhymes (162 million),
+                    SET India (159 million), Kids Diana Show (112 million), PewDiePie (111 million),
+                    Like Nastya (106 million), and Vlad and Niki (98.9 million).
+                    It offers a quick snapshot of the most influential YouTube channels,
+                    emphasizing their significant subscriber base and digital presence.
+                </p>
+                <div class="visualization-container">
+                    <div id="lollipop"></div>
+                </div>
+
+                <!-- Add your content elements here -->
+            </div>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="plot-section">
+            <div class="content">
+                <!-- Your content goes here -->
+                <h1
+                    style="text-align:center; font-size: 45px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; color: #8B0000;">
+                    Global YouTuber Distribution 2023</h1>
+                <p
+                    style="  line-height: 1.5; margin-bottom: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 18px; color: rgb(105, 25, 25); text-align: justify;">
+                    An insightful perspective on the worldwide presence of YouTubers in the year 2023 is offered.
+                    The <span class="text-highlight">United States</span> emerges as the frontrunner with a substantial
+                    count of <span class="text-highlight">313</span> YouTubers, followed closely by India,
+                    which boasts 168 YouTubers. Brazil also stands out with 62 YouTubers. As you explore the map, a
+                    compelling pattern
+                    emerges - a significant concentration of YouTubers can be observed in the <span
+                        class="text-highlight">European</span> region. This visualization
+                    not only highlights the dominant countries in terms of YouTuber presence but also underscores the
+                    global
+                    popularity of this digital platform, illustrating the widespread impact of YouTube content creators.
+                </p>
+                <div class="visualization-container">
+                    <div id="symbol_map"></div>
+                </div>
+
+                <!-- Add your content elements here -->
+            </div>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="plot-section">
+            <div class="content">
+                <!-- Plot containers with titles and IDs -->
+                <h1
+                    style="text-align:center; font-size: 45px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; color: #8B0000;">
+                    Diversity of YouTube Channel Type</h1>
+                <div class="pure-g">
+                    <div class="pure-u-3-5">
+                        <div id="radial" class="vis-container" style="margin-top: 50px;"></div>
+                    </div>
+
+                    <div id="txt1" class="pure-u-2-5">
+                        <p
+                            style="  line-height: 1.5; margin-bottom: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 16px; color: rgb(105, 25, 25); text-align: justify;">
+                            In 2023, YouTube boasts a diverse landscape of channel types,
+                            as depicted in this visualization. <span class="text-highlight">'Entertainment'</span> takes
+                            the lead
+                            with <span class="text-highlight">288 YouTubers</span>, closely followed by 'Music' with 196
+                            creators.
+                            'Games' also commands a substantial presence, with 86 dedicated channels.
+                            However, this visual exploration goes beyond the obvious, showcasing various
+                            channel types such as 'People,' 'Comedy,' 'Education,' and more.</p>
+                        <span></span>
+                        <p
+                            style="  line-height: 1.5; margin-bottom: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 16px; color: rgb(105, 25, 25); text-align: justify;">
+                            This compact overview not only emphasizes content diversity but
+                            also provides <span class="text-highlight">insights into creator and viewer
+                                preferences.</span> 'Entertainment'
+                            and 'Music' emerge as universal favorites, while a multitude of categories
+                            reflects YouTube's flexibility to accommodate diverse interests and talents.
+                            This visualization offers a glimpse into YouTube's dynamic landscape, shedding
+                            light on the ever-evolving world of content creation.</p>
+                    </div>
+                </div>
+                <h1
+                    style="text-align:center; font-size: 45px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; color: #8B0000;">
+                    Total Uploads Across YouTube Channel Types</h1>
+                <div>
+                    <p
+                        style="  line-height: 1.5; margin-bottom: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 16px; color: rgb(105, 25, 25); text-align: justify;">
+                        A revealing snapshot of YouTube's content diversity in terms of total uploads is visualized.
+                        <span class="text-highlight">'News'</span> emerges as the leading channel type with an
+                        impressive <span class="text-highlight">3,989,151 uploads</span>, highlighting
+                        its prominent role in sharing current events and information. 'Entertainment' closely follows
+                        with 3,336,591 uploads, showcasing the platform's versatility in hosting various engaging
+                        content. Notably, the 'Music' category, securing the third spot with 418,595 uploads,
+                        exemplifies the varied landscape of YouTube, where some genres thrive while others maintain a
+                        more modest yet significant presence. This data underscores the dynamic and multifaceted nature
+                        of content creation on YouTube, with different channel types catering to diverse interests and
+                        audiences.
+                    </p>
+                    <div class="visualization-container">
+                        <div id="funnel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="plot-section">
+            <div class="content">
+                <!-- Your content goes here -->
+                <h1
+                    style="text-align:center; font-size: 45px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; color: #8B0000;">
+                    Video Views against Mean Yearly Earnings</h1>
+                <p
+                    style="  line-height: 1.5; margin-bottom: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 16px; color: rgb(105, 25, 25); text-align: justify;">
+                    This visualization, depicting the relationship between video views and mean yearly earnings, offers
+                    a
+                    valuable perspective on the success of YouTube channels in 2023. Notably, it underscores the
+                    exceptional performance of <span class="text-highlight">T-Series</span>, the most subscribed channel
+                    in 2023, which also <span class="text-highlight">excels in terms
+                        of video views against mean yearly earnings.</span> By visualizing these key metrics, this plot
+                    provides
+                    insights into the varying degrees of success among YouTube channels, illustrating how some manage to
+                    achieve a remarkable balance between attracting <span class="text-highlight">high viewership</span>
+                    and earning <span class="text-highlight">substantial annual
+                        revenue.</span> It serves as a powerful tool for content creators and analysts to identify
+                    patterns and
+                    strategies that lead to a flourishing YouTube presence, offering valuable guidance for those seeking
+                    to thrive on the platform.
+                </p>
+                <div class="visualization-container">
+                    <div id="scatter"></div>
+                </div>
+
+                <!-- Add your content elements here -->
+            </div>
+        </div>
+
+    </div>
+
 
     <script type="text/javascript">
 
-        var spec2 = "js/proportional_symbol_map.vg.json";
-        vegaEmbed('#symbol_map', spec2).then(function (result) {
+        var lollipop = "js/lollipop.vg.json";
+        vegaEmbed('#lollipop', lollipop, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        var map = "js/proportional_symbol_map.vg.json";
+        vegaEmbed('#symbol_map', map, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        var radial = "js/radial.vg.json";
+        vegaEmbed('#radial', radial, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        var funnel = "js/funnel.vg.json";
+        vegaEmbed('#funnel', funnel, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        var scatter = "js/scatterplot.vg.json";
+        vegaEmbed('#scatter', scatter, { "actions": false }).then(function (result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
     </script>

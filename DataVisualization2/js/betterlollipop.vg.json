@@ -1,0 +1,94 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 800,
+      "height": 450,
+      "background": null,
+    "title": "",
+      "data": {
+          "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv",
+          "format": {"type": "csv"}
+      },
+    "params": [{
+          "name": "numYoutuber",
+          "value": 7,
+          "bind": {
+              "input": "range",
+              "min": 2,
+              "max": 10,
+              "step": 1,
+              "name": "Number of Youtuber: "
+          }
+      }]
+    ,
+    "transform": [
+      {
+        "window": [{
+          "field": "subscribers",
+          "op":"rank",
+          "as":"rank"
+        }],
+        "sort": [{"field":"subscribers","order":"descending"}]
+      },
+      {
+        "filter":"datum.rank <=numYoutuber"
+      }
+    ],
+    "layer": [{
+      "mark": {"type": "bar", "size":10},
+      "encoding": {
+        "y":{
+          "field":"Youtuber",
+          "type": "ordinal",
+          "title": "Youtuber",
+          "sort":"-x"
+        },
+        "x":{
+          "field":"subscribers",
+          "aggregate":"max",
+          "title": "Number of Subscribers",
+          "axis": {"domain": true, "grid": false, "ticks": true}
+        },
+        "size": {"value": 13},
+        "color": {
+                      "condition": {"test": "datum.Youtuber === 'T-Series'", "value": "darkred"},
+                      "value": "#FF6666"
+                  },
+                  "tooltip": [
+                    {"field": "Youtuber", "type": "nominal", "title": "YouTuber"},
+                    {"field": "subscribers", "type": "quantitative", "title": "Subscribers", "format": ","}
+                ]
+          
+      }
+    },
+    {
+      "mark": {"type": "point","size":250,"filled":true} ,
+      "encoding": {
+        "y":{
+          "field":"Youtuber", "sort":"-x"
+        },
+        "x":{
+          "aggregate":"max",
+          "field":"subscribers",
+          "axis": {"domain": true, "grid": false, "ticks": true}
+        },
+        "size": {"value": 800},
+                  "color": {
+                      "condition": {"test": "datum.Youtuber === 'T-Series'", "value": "darkred"},
+                      "value": "#FF6666"
+                  },
+        
+                  "tooltip": [
+                    {"field": "Youtuber", "type": "nominal", "title": "YouTuber"},
+                    {"field": "subscribers", "type": "quantitative", "title": "Subscribers", "format": ","}
+                ]
+      }
+    }],
+        "config": {
+          "axisX": {
+              "labelAngle": 0
+          },
+          "view": {
+              "stroke": "transparent"
+            }
+      }
+  }

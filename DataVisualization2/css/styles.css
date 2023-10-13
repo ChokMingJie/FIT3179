@@ -3,7 +3,6 @@
 	font-size: 36px;
 	font-weight: bold;
 	text-align: center;
-	margin-top: 20px;
 	border-radius: 10px;
 	color: lightgray;
 	/* YouTube red color */
@@ -35,12 +34,12 @@
 
 .page {
 	width: 1000px;
-	height: 4770px;
+	height: 4380px;
 	background-color: lightcoral;
 	margin: auto;
 	border-radius: 10px;
 	padding: 50px;
-	padding-top: 35px;
+	padding-top: 10px;
 }
 
 .space {
@@ -64,7 +63,7 @@
 }
 
 .text-highlight {
-	color: darkred;
+	color: rgb(99, 0, 0);
 	font-weight: bold;
-	font-size: 21px;
+	font-size: 32px;
   }

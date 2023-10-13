@@ -45,6 +45,12 @@
     "config": {
       "view": {
         "stroke": "transparent"
+      },
+      "axis": {
+        "titleFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+        "titleFontSize": 20,
+        "labelFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+        "labelFontSize": 12
       }
     },
     "layer": [
@@ -57,7 +63,7 @@
             "legend": null,
             "scale": {
                 "range": [
-                    "#f4737a", "#ff8c85", "#3d6a9b", "#f02720", "#b5a08a", "#9aa4bd",
+                    "#f4737a", "#ff8c85", "#3d4a9b", "#f02720", "#b5a08a", "#9aa4bd",
                     "#ac8763", "#bd0a36", "#6ba3d6", "#d3a573", "#ac613c", "#2c69b0"
                 ]
             }
@@ -81,7 +87,8 @@
           "type": "text",
           "align": "left",
           "baseline": "middle",
-          "dx": 5
+          "dx": 5,
+          "fontSize": 14
         },
         "encoding": {
           "text": {

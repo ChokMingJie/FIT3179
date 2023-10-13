@@ -1,80 +1,88 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
       "url": "https://raw.githubusercontent.com/ChokMingJie/FIT3179/main/DataVisualization2/data/Global_YouTube_Statistics.csv"
-    },
-    "background": null,
-    "title": {
+  },
+  "background": null,
+  "title": {
       "text": "",
       "fontSize": 20,
       "font": "Helvetica"
-    },
-    "width": 450,
-    "height": 400,
-    "transform": [
+  },
+  "width": 650,
+  "height": 500,
+  "transform": [
       {
-        "calculate": "datum.channel_type === 'Animals' || datum.channel_type === 'Autos' || datum.channel_type === 'Nonprofit' ? 'Other' : datum.channel_type",
-        "as": "grouped_channel_type"
+          "calculate": "datum.channel_type === 'Animals' || datum.channel_type === 'Autos' || datum.channel_type === 'Nonprofit' ? 'Other' : datum.channel_type",
+          "as": "grouped_channel_type"
       },
       {
-        "filter": "datum.grouped_channel_type !== 'nan'"
+          "filter": "datum.grouped_channel_type !== 'nan'"
       },
       {
-        "aggregate": [{"op": "count", "field": "count", "as": "channelTypeSum"}],
-        "groupby": ["grouped_channel_type"]
+          "aggregate": [
+              { "op": "count", "field": "count", "as": "channelTypeSum" }
+          ],
+          "groupby": ["grouped_channel_type"]
       }
-    ],
-    "config": {
-        "view": {
+  ],
+  "config": {
+      "view": {
           "stroke": "transparent"
-        }
-    },
-    "layer": [
+      },
+      "legend": {
+          "orient": "top-left",
+          "titleFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+          "labelFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+          "titleFontSize": 16, 
+          "labelFontSize": 14 
+      }
+  },
+  "layer": [
       {
-        "mark": {"type": "arc", "innerRadius": 40, "stroke": "white"},
-        "encoding": {
-          "theta": {
-            "field": "channelTypeSum",
-            "type": "quantitative",
-            "stack": true
-          },
-          "color": {
-            "field": "grouped_channel_type",
-            "type": "nominal",
-            "scale": {
-                "range": [
-                    "#f4737a", "#ff8c85", "#3d6a9b", "#f02720", "#b5a08a", "#9aa4bd",
-                    "#ac8763", "#bd0a36", "#6ba3d6", "#d3a573", "#ac613c", "#2c69b0"
-                ]
-            }
-          },
-          "tooltip": [
-            {"field": "grouped_channel_type", "title": "Channel Type"},
-            {"field": "channelTypeSum", "title": "Total Number of YouTubers"}
-          ]
-        }
+          "mark": { "type": "arc", "innerRadius": 40, "stroke": "white" },
+          "encoding": {
+              "theta": {
+                  "field": "channelTypeSum",
+                  "type": "quantitative",
+                  "stack": true
+              },
+              "color": {
+                  "field": "grouped_channel_type",
+                  "type": "nominal",
+                  "scale": {
+                      "range": [
+                          "#f4737a", "#ff8c85", "#3d4a9b", "#f02720", "#b5a08a", "#9aa4bd",
+                          "#ac8763", "#bd0a36", "#6ba3d6", "#d3a573", "#ac613c", "#2c69b0"
+                      ]
+                  }
+              },
+              "tooltip": [
+                  { "field": "grouped_channel_type", "title": "Channel Type" },
+                  { "field": "channelTypeSum", "title": "Total Number of YouTubers" }
+              ]
+          }
       },
       {
-        "mark": {"type": "text", "color": "black", "radiusOffset": 10},
-        "encoding": {
-          "theta": {
-            "field": "channelTypeSum",
-            "type": "quantitative",
-            "stack": true
-          },
-          "text": {"field": "channelTypeSum", "type": "quantitative"},
-          "fillOpacity": {"value": 1}
-        }
+          "mark": { "type": "text", "color": "black", "radiusOffset": 15, "fontSize": 14 }, 
+          "encoding": {
+              "theta": {
+                  "field": "channelTypeSum",
+                  "type": "quantitative",
+                  "stack": true
+              },
+              "text": { "field": "channelTypeSum", "type": "quantitative" },
+              "fillOpacity": { "value": 1 }
+          }
       }
-    ],
-    "encoding": {
-      "theta": {"field": "channelTypeSum", "type": "quantitative", "stack": true, "sort": "ascending"},
-      "radius": {"field": "channelTypeSum", "scale": {"type": "sqrt", "zero": true, "rangeMin": 100}},
-      "color": {"field": "grouped_channel_type", "type": "nominal","title": "Channel Type"},
+  ],
+  "encoding": {
+      "theta": { "field": "channelTypeSum", "type": "quantitative", "stack": true, "sort": "ascending" },
+      "radius": { "field": "channelTypeSum", "scale": { "type": "sqrt", "zero": true, "rangeMin": 100 } },
+      "color": { "field": "grouped_channel_type", "type": "nominal", "title": "Channel Type" },
       "tooltip": [
-        {"field": "grouped_channel_type", "title": "Channel Type"},
-        {"field": "channelTypeSum", "title": "Total Number of YouTubers"}
+          { "field": "grouped_channel_type", "title": "Channel Type" },
+          { "field": "channelTypeSum", "title": "Total Number of YouTubers" }
       ]
-    }
   }
-  
+}

@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 770,
+    "width": 705,
     "height": 400,
     "background": null,
     "title": "",
@@ -37,6 +37,23 @@
           "axis": { "format": "~s", "grid": false, "labelFlush": true, "labelOverlap": true, "ticks": false }
         }
     },
+    "config": {
+      "view": {
+        "stroke": "transparent"
+      },
+      "axis": {
+        "titleFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+        "titleFontSize": 20,
+        "labelFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+        "labelFontSize": 12
+      },
+      "legend": {
+        "titleFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+        "labelFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+        "titleFontSize": 16, 
+        "labelFontSize": 14 
+    }
+    },
     "layer": [
       {
         "mark": "circle",
@@ -56,9 +73,9 @@
           "field": "subscribers",
           "type": "quantitative",
           "title": "Number of Subscribers",
-          "scale": { "range": ["#ff758f", "darkred"] }
+          "scale": { "range": ["darkblue", "darkred"] }
         },
-          "opacity": {"value": 0.6},
+          "opacity": {"value": 0.9},
         "tooltip": [
           { "field": "video views", "title": "Video Views", "format": "," },
           { "field": "mean_yearly_earnings", "title": "Yearly Earnings", "format": "," },
@@ -72,7 +89,7 @@
           "type": "text",
           "align": "right",
           "baseline": "middle",
-          "dx": -12,
+          "dx": -10,
           "fontSize": 11.5,
           "fontStyle": "italic"
         },
@@ -97,18 +114,18 @@
       {
         "mark": {
           "type": "text",
-          "align": "right",
+          "align": "left",
           "baseline": "middle",
-          "dy": 35,
-          "dx": 280,
-          "fontSize": 11.5,
-          "fontStyle": "italic"
+          "dy": 20,
+          "dx": -10,
+          "fontSize": 13.5,
+          "fontStyle": "bold"
         },
         "encoding": {
           "text": {
             "condition": {
               "test": "datum['Youtuber'] == 'Vlad and Niki'",
-              "value": "Vlad and Niki is a fast growing popular children's YouTube channel."
+              "value": ["Vlad and Niki is a fast growing popular ", "children's YouTube channel."]
             },
             "value": ""
           },

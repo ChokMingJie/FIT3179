@@ -43,6 +43,12 @@
   "config": {
     "view": {
       "stroke": "transparent"
+    },    
+    "legend": {
+      "titleFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+      "titleFontSize": 12,
+      "labelFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
+      "labelFontSize": 11
     }
 },
   "layer": [
@@ -75,8 +81,6 @@
         "tooltip": [
           {"field": "Country", "type": "nominal", "title": "Country"},
           {"field": "Youtuber Count", "type": "quantitative", "title": "Number of Youtuber"},
-          {"field": "latitude", "type": "quantitative", "title": "Latitude"},
-          {"field": "longitude", "type": "quantitative", "title": "Longitude"},
           {"field": "Population", "type": "quantitative", "title": "Population", "format": ","}
         ],
         "size": {
@@ -103,7 +107,7 @@
         "align": "right",
         "baseline": "middle",
         "dx": -12,
-        "fontSize": 11.5,
+        "fontSize": 13.5,
         "fontStyle": "italic"
       },
       "encoding": {

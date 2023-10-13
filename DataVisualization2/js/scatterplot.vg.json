@@ -77,9 +77,9 @@
         },
           "opacity": {"value": 0.9},
         "tooltip": [
+          { "field": "Youtuber", "title": "YouTuber" },
           { "field": "video views", "title": "Video Views", "format": "," },
           { "field": "mean_yearly_earnings", "title": "Yearly Earnings", "format": "," },
-          { "field": "Youtuber", "title": "YouTuber" },
           { "field": "subscribers", "title": "Subscribers", "format": "," }
         ]
         }
@@ -104,9 +104,9 @@
             "value": 0
           },
           "tooltip": [
+          { "field": "Youtuber", "title": "YouTuber" },
           { "field": "video views", "title": "Video Views", "format": "," },
           { "field": "mean_yearly_earnings", "title": "Yearly Earnings", "format": "," },
-          { "field": "Youtuber", "title": "YouTuber" },
           { "field": "subscribers", "title": "Subscribers", "format": "," }
           ]
         }
@@ -125,7 +125,7 @@
           "text": {
             "condition": {
               "test": "datum['Youtuber'] == 'Vlad and Niki'",
-              "value": ["Vlad and Niki is a fast growing popular ", "children's YouTube channel."]
+              "value": ["Vlad and Niki, a rapidly growing ", "children's YouTube channel,", " was created in 2018."]
             },
             "value": ""
           },
@@ -138,9 +138,9 @@
             "value": 0
           },
           "tooltip": [
+            { "field": "Youtuber", "title": "YouTuber" },
             { "field": "video views", "title": "Video Views", "format": "," },
             { "field": "mean_yearly_earnings", "title": "Yearly Earnings", "format": "," },
-            { "field": "Youtuber", "title": "YouTuber" },
             { "field": "subscribers", "title": "Subscribers", "format": "," }
           ]
         }

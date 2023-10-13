@@ -35,12 +35,19 @@
           "titleFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
           "labelFont": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial",
           "titleFontSize": 16, 
-          "labelFontSize": 14 
+          "labelFontSize": 14
       }
   },
   "layer": [
       {
-          "mark": { "type": "arc", "innerRadius": 40, "stroke": "white" },
+        "params": [
+          {
+            "name": "channel_type_highlight",
+            "select": { "type": "point", "fields": ["grouped_channel_type"]},
+            "bind": "legend"
+          }
+        ],
+        "mark": { "type": "arc", "innerRadius": 40, "stroke": "white" },
           "encoding": {
               "theta": {
                   "field": "channelTypeSum",
@@ -57,6 +64,10 @@
                       ]
                   }
               },
+              "opacity": {
+                "condition": { "param": "channel_type_highlight", "value": 1 },
+                "value": 0.2
+              },
               "tooltip": [
                   { "field": "grouped_channel_type", "title": "Channel Type" },
                   { "field": "channelTypeSum", "title": "Total Number of YouTubers" }
@@ -72,8 +83,39 @@
                   "stack": true
               },
               "text": { "field": "channelTypeSum", "type": "quantitative" },
-              "fillOpacity": { "value": 1 }
+              "fillOpacity": {
+                "condition": { "param": "channel_type_highlight", "value": 1 },
+                "value": 0
+              }
           }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dy": -65,
+          "dx": 175,
+          "fontSize": 11.5,
+          "fontStyle": "bold"
+        },
+        "encoding": {
+          "text": {
+            "condition": {
+              "test": "datum['grouped_channel_type'] == 'Entertainment'",
+              "value": ["Entertainment ", "channels constitute", " over 33% of all", " other  channel types."]
+            },
+            "value": ""
+          },
+          "color": { "value": "black" },
+          "opacity": {
+            "condition": {
+              "test": "datum['grouped_channel_type'] == 'Entertainment'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
       }
   ],
   "encoding": {

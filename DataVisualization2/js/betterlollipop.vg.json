@@ -103,6 +103,34 @@
           {"field": "subscribers", "type": "quantitative", "title": "Subscribers", "format": ","}
         ]
       }
+    },      
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dy": -90,
+        "dx": 160,
+        "fontSize": 13.5,
+        "fontStyle": "bold"
+      },
+      "encoding": {
+        "text": {
+          "condition": {
+            "test": "datum['Youtuber'] == 'MrBeast'",
+            "value": ["MrBeast has gained an impressive", "8 million in a duration of 30 days."]
+          },
+          "value": ""
+        },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Youtuber'] == 'MrBeast'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
     }
   ],
   "config": {

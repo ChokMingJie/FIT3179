@@ -107,7 +107,7 @@
         "align": "right",
         "baseline": "middle",
         "dx": -12,
-        "fontSize": 13.5,
+        "fontSize": 12,
         "fontStyle": "italic"
       },
       "encoding": {
@@ -121,6 +121,62 @@
           "filter": "datum['Country'] === 'China' || datum['Country'] === 'Australia' || datum['Country'] === 'United Kingdom' || datum['Country'] === 'Spain' || datum['Country'] === 'United States' || datum['Country'] === 'India' || datum['Country'] === 'Brazil'"
         }
       ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dy": -88,
+        "dx": 0,
+        "fontSize": 11.5,
+        "fontStyle": "bold"
+      },
+      "encoding": {
+        "text": {
+          "condition": {
+            "test": "datum['Country'] == 'United States'",
+            "value": ["United States boasts 5 YouTubers in", "the Top 10 Subscribers list."]
+          },
+          "value": ""
+        },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'United States'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dy": -35,
+        "dx": -220,
+        "fontSize": 10.5,
+        "fontStyle": "bold"
+      },
+      "encoding": {
+        "text": {
+          "condition": {
+            "test": "datum['Country'] == 'India'",
+            "value": ["T-Series,", " the leading YouTube", "channel in terms of", "subscribers, originates", "from India."]
+          },
+          "value": ""
+        },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'India'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
     }
   ]
 }

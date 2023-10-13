@@ -107,6 +107,34 @@
             "field": "grouped_channel_type"
           }
         }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dy": 80,
+          "dx": 200,
+          "fontSize": 13.5,
+          "fontStyle": "bold"
+        },
+        "encoding": {
+          "text": {
+            "condition": {
+              "test": "datum['grouped_channel_type'] == 'News'",
+              "value": ["Nearly 80% of all uploads", " come from Entertainment and ", "News channel types."]
+            },
+            "value": ""
+          },
+          "color": { "value": "black" },
+          "opacity": {
+            "condition": {
+              "test": "datum['grouped_channel_type'] == 'News'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
       }
     ]
   }
